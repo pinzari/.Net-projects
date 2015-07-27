@@ -18,10 +18,19 @@
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
+                   
+                    <div style="padding:5px">
+                        @{
+                        foreach (var i in ClubGorizont.org.Controllers.SiteLanguages.AvailableLanguages )
+                        {
+                            @Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { lang = i.LangCultureName }, null) <text> &nbsp;</text> 
+                        }
+                        }
+                         </div>
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink(ClubGorizont.org.Resource.About, "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
                     </nav>

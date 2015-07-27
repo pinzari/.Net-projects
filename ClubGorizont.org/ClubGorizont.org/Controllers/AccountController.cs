@@ -37,6 +37,7 @@ namespace ClubGorizont.org.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+
                 return RedirectToLocal(returnUrl);
             }
 
@@ -403,5 +404,27 @@ namespace ClubGorizont.org.Controllers
             }
         }
         #endregion
+
+        #region Culture & Languages
+
+        public ActionResult ChangeCurrentCulture(int culture)
+        {
+            //
+            // Change the current culture for this user.
+            //
+            //
+            // Cache the new current culture into the user HTTP session. 
+            //
+            Session["CurrentUICulture"] = culture;
+            //
+            // Redirect to the same page from where the request was made! 
+            //
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+
+
+        #endregion
+
     }
 }
